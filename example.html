@@ -1,0 +1,133 @@
+<html>
+<head>
+    <title>jQuery orgChart Plugin Demo</title>   
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="jquery.orgchart.css" media="all" rel="stylesheet" type="text/css" />
+<style type="text/css">
+#orgChart{
+    width: auto;
+    height: auto;
+}
+
+#orgChartContainer{
+    width: auto;
+    height: 580px;
+    overflow: auto;
+    background: #eeeeee;
+}
+
+.node{
+        border-radius: 10px !important;
+        background: #1794d4 !important;
+        color: white;
+        height: 80px !important;
+        width: 160px !important;
+        border: 2px solid black !important;
+        font-family: sans-serif;
+        font-size: smaller;
+    }
+
+    #jquery-script-menu {
+position: fixed;
+height: 90px;
+width: 100%;
+top: 0;
+left: 0;
+border-top: 5px solid #316594;
+background: #fff;
+-moz-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+-webkit-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+z-index: 999999;
+padding: 10px 0;
+-webkit-box-sizing:content-box;
+-moz-box-sizing:content-box;
+box-sizing:content-box;
+}
+
+.jquery-script-center {
+width: 960px;
+margin: 0 auto;
+}
+.jquery-script-center ul {
+width: 212px;
+float:left;
+line-height:45px;
+margin:0;
+padding:0;
+list-style:none;
+}
+.jquery-script-center a {
+    text-decoration:none;
+}
+.jquery-script-ads {
+width: 728px;
+height:90px;
+float:right;
+}
+.jquery-script-clear {
+clear:both;
+height:0;
+}
+    </style>
+</head>
+<body>
+    <div id="orgChartContainer">
+      <div id="orgChart"></div>
+    </div>
+    <!-- <div id="consoleOutput">
+    </div> -->
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="jquery.orgchart.js"></script>
+    <script type="text/javascript">
+    var testData = [
+        {id: 1, name: 'Name', title: 'Amount', parent: 0},
+        {id: 2, name: 'Name', title: 'Amount', parent: 1},
+        {id: 3, name: 'Name', title: 'Amount', parent: 1},
+        {id: 4, name: 'Name', title: 'Amount', parent: 1},
+        {id: 6, name: 'Name', title: 'Amount', parent: 1},
+        {id: 7, name: 'Name', title: 'Amount', parent: 1},
+        {id: 8, name: 'Name', title: 'Amount', parent: 1},
+        {id: 5, name: 'Name', title: 'Amount', parent: 3},
+        
+    ];
+    $(function(){
+        org_chart = $('#orgChart').orgChart({
+            data: testData,
+            showControls: true,
+            allowEdit: true,
+            onAddNode: function(node){ 
+                log('Created new node on node '+node.data.id);
+                org_chart.newNode(node.data.id); 
+            },
+            onDeleteNode: function(node){
+                log('Deleted node '+node.data.id);
+                org_chart.deleteNode(node.data.id); 
+            },
+            onClickNode: function(node){
+                log('Clicked node '+node.data.id);
+            }
+
+        });
+    });
+
+    // just for example purpose
+    function log(text){
+        $('#consoleOutput').append('<p>'+text+'</p>')
+    }
+    </script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
